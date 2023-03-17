@@ -8,4 +8,8 @@ const getEpisodeDetails = (episodeId: number) => {
   return axiosConfig.get('/episode/' + episodeId);
 };
 
-export {getAllEpisodesByPage, getEpisodeDetails};
+const getEpisodesByName = (episodeName: string) => {
+  return axiosConfig.get('/episode/?name=' + episodeName);
+};
+
+export {getAllEpisodesByPage, getEpisodeDetails, getEpisodesByName};

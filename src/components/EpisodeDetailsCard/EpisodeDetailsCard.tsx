@@ -5,8 +5,9 @@ import {EpisodeDetailsCardProps} from './EpisodeDetailsCardProps';
 const EpisodeDetailsCard = ({item}: EpisodeDetailsCardProps) => {
   return (
     <View style={styles.container}>
-      <Text>{item.air_date}</Text>
-      <Text>{item.episode}</Text>
+      <Text style={styles.episodeName}>{item.name}</Text>
+      <Text style={styles.text}>{item.air_date}</Text>
+      <Text style={styles.text}>{item.episode}</Text>
       <Text>Characters</Text>
       {item?.characters.map((character, index) => {
         return (
@@ -26,7 +27,15 @@ export default EpisodeDetailsCard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'gray',
+  },
+  episodeName: {
+    fontSize: 24,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 18,
   },
   characterImage: {
     width: 50,

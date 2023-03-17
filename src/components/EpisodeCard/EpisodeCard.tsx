@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {EpisodeCardProps} from './EpisodeCardProps';
 import {useNavigation} from '../../hooks';
@@ -11,14 +11,14 @@ const EpisodeCard = ({item}: EpisodeCardProps) => {
   };
 
   return (
-    <View style={styles.container} key={item.id}>
-      <Text style={styles.text}>{item.name}</Text>
-      <Text>{item.air_date}</Text>
-      <Text>{item.episode}</Text>
-      <TouchableOpacity onPress={() => onDetailsPress()}>
-        <Text>Details</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      style={styles.container}
+      key={item.id}
+      onPress={() => onDetailsPress()}>
+      <Text style={styles.episodeName}>{item.name}</Text>
+      <Text style={styles.text}>{item.air_date}</Text>
+      <Text style={styles.text}>{item.episode}</Text>
+    </TouchableOpacity>
   );
 };
 
@@ -28,9 +28,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    margin: 10,
+    gap: 5,
   },
   text: {
-    color: 'red',
+    fontSize: 16,
+  },
+  episodeName: {
+    color: 'blue',
+    fontSize: 18,
+    fontWeight: '700',
   },
 });

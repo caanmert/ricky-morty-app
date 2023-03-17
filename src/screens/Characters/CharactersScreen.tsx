@@ -1,34 +1,35 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {getAllEpisodesByPage, getEpisodesByName} from '../../api/Episodes';
-import Episode from '../../types/Episode';
-import EpisodeCard from '../../components/EpisodeCard/EpisodeCard';
+import {Character} from '../../types';
 import {useSearchBar} from '../../hooks';
+import {
+  getAllCharactersByPage,
+  getCharactersByName,
+} from '../../api/Characters';
+import {CharacterCard} from '../../components';
 
-const EpisodesScreen = () => {
-  const [episodes, setEpisodes] = useState<Episode[]>();
-  const [filteredData, setFilteredData] = useState<Episode[]>();
+const CharactersScreen = () => {
+  const [characters, setCharacters] = useState<Character[]>();
+  const [filteredData, setFilteredData] = useState<Character[]>();
   const [page, setPage] = useState<number>(1);
-  const [error, setError] = useState<string>();
+  const [error, setError] = useState<string>('');
 
-  const episodeName = useSearchBar();
+  const characterName = useSearchBar();
 
   useEffect(() => {
-    getAllEpisodesByPage(page)
+    getAllCharactersByPage(page)
       .then(res => {
-        setEpisodes((prevState = []) => [...prevState, ...res.data.results]);
+        setCharacters((prevState = []) => [...prevState, ...res.data.results]);
       })
       .catch(err => {
-        console.log(err);
         setError(err);
       });
-
     return () => {};
   }, [page]);
 
   useEffect(() => {
-    if (episodeName !== '') {
-      getEpisodesByName(episodeName)
+    if (characterName !== '') {
+      getCharactersByName(characterName)
         .then(res => {
           setFilteredData(res.data.results);
         })
@@ -38,9 +39,8 @@ const EpisodesScreen = () => {
     } else {
       setFilteredData([]);
     }
-
     return () => {};
-  }, [episodeName]);
+  }, [characterName]);
 
   const handleLoadMore = () => {
     setPage(page + 1);
@@ -49,10 +49,13 @@ const EpisodesScreen = () => {
   return (
     <View style={styles.container}>
       {error && <Text>{error}</Text>}
+
       <FlatList
         contentContainerStyle={styles.contentContainerStyle}
-        data={filteredData && filteredData.length > 0 ? filteredData : episodes}
-        renderItem={props => <EpisodeCard {...props} />}
+        data={
+          filteredData && filteredData.length > 0 ? filteredData : characters
+        }
+        renderItem={props => <CharacterCard {...props} />}
         onEndReachedThreshold={0.5}
         onEndReached={handleLoadMore}
       />
@@ -60,7 +63,7 @@ const EpisodesScreen = () => {
   );
 };
 
-export default EpisodesScreen;
+export default CharactersScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -8,6 +8,10 @@ const getCharacterDetails = (characterId: number) => {
   return axiosConfig.get('/character/' + characterId);
 };
 
+const getCharactersByName = (name: string) => {
+  return axiosConfig.get('/character/?name=' + name);
+};
+
 const getMultipleCharacters = (characterIds: []) => {
   console.log(characterIds);
   const stringData = characterIds.map(({value}) => `${value}`).join(',');
@@ -16,4 +20,9 @@ const getMultipleCharacters = (characterIds: []) => {
   //return axiosConfig.get('/character' + JSON.stringify(characterIds));
 };
 
-export {getAllCharactersByPage, getCharacterDetails, getMultipleCharacters};
+export {
+  getAllCharactersByPage,
+  getCharacterDetails,
+  getMultipleCharacters,
+  getCharactersByName,
+};
