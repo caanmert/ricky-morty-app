@@ -2,7 +2,6 @@ import CenteredActivityIndicator from './CenteredActivityIndicator/CenteredActiv
 import CharacterCard from './CharacterCard/CharacterCard';
 import EpisodeCard from './EpisodeCard/EpisodeCard';
 import EpisodeDetailsCard from './EpisodeDetailsCard/EpisodeDetailsCard';
-import FavoriteButton from './FavoriteButton/FavoriteButton';
 import FavoriteCard from './FavoriteCard/FavoriteCard';
 
 export {
@@ -10,6 +9,5 @@ export {
   EpisodeDetailsCard,
   CharacterCard,
   CenteredActivityIndicator,
-  FavoriteButton,
   FavoriteCard,
 };

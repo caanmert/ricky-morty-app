@@ -9,7 +9,6 @@ import {
 import React from 'react';
 import {useNavigation} from '../../hooks';
 import {CharacterCardProps} from './CharacterCardProps';
-import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CharacterCard = ({item}: CharacterCardProps) => {
@@ -34,7 +33,7 @@ const CharacterCard = ({item}: CharacterCardProps) => {
       <Image source={{uri: item.image}} style={styles.image} />
       <View style={styles.details}>
         <Text style={styles.text}>{item.name}</Text>
-        <FavoriteButton onPress={saveFavorites} />
+        <Button title="Add to Favorites" onPress={saveFavorites} />
       </View>
     </TouchableOpacity>
   );

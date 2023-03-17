@@ -1,7 +1,6 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Button, Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {CharacterDetailsCardProps} from './CharacterDetailsCardProps';
-import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
 const CharacterDetailsCard = ({item}: CharacterDetailsCardProps) => {
   const addToFavorites = () => {
@@ -26,7 +25,7 @@ const CharacterDetailsCard = ({item}: CharacterDetailsCardProps) => {
         <Text style={styles.text}>URL: {item.origin.url}</Text>
         <Text style={styles.text}>Earth: {item.location.name}</Text>
       </View>
-      <FavoriteButton onPress={addToFavorites} />
+      <Button title="Add to Favorites" onPress={addToFavorites} />
     </View>
   );
 };
