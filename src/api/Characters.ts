@@ -13,7 +13,8 @@ const getCharactersByName = (name: string) => {
 };
 
 const getMultipleCharacters = (characterIds: []) => {
-  return axiosConfig.get('/character/' + characterIds);
+  console.log(characterIds);
+  return axiosConfig.get('/character/' + characterIds + ',');
 };
 
 export {
