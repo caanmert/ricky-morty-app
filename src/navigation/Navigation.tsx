@@ -27,7 +27,7 @@ const Tab = createBottomTabNavigator();
 
 const EpisodesStackNavigator = () => {
   return (
-    <EpisodesStack.Navigator screenOptions={{headerLargeTitle: true}}>
+    <EpisodesStack.Navigator>
       <EpisodesStack.Screen name="Episodes" component={EpisodesScreen} />
       <EpisodesStack.Screen
         options={{headerTitle: 'Details'}}
@@ -40,7 +40,7 @@ const EpisodesStackNavigator = () => {
 
 const CharactersStackNavigator = () => {
   return (
-    <CharactersStack.Navigator screenOptions={{headerLargeTitle: true}}>
+    <CharactersStack.Navigator>
       <CharactersStack.Screen name="Characters" component={CharactersScreen} />
       <CharactersStack.Screen
         options={{headerTitle: 'Character Details'}}

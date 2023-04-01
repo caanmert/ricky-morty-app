@@ -57,7 +57,6 @@ export default FavoritesScreen;
 
 const styles = StyleSheet.create({
   contentContainerStyle: {
-    marginTop: 10,
     gap: 10,
   },
 });
